@@ -117,6 +117,8 @@ WORKDIR ./
 COPY nginx-docker.conf /etc/nginx/http.d/vvveb.conf
 RUN rm /etc/nginx/http.d/default.conf
 
+WORKDIR ./
+
 COPY supervisord.conf /etc/
 
 EXPOSE 80
