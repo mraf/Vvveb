@@ -112,13 +112,15 @@ RUN chmod -R 755 ${DIR_CACHE}
 RUN chmod -R 755 ${DIR_DIGITAL_ASSETS}
 RUN chmod -R 755 ${DIR_IMAGE_CACHE}
 
-# COPY nginx-docker.conf /etc/nginx/http.d/vvveb.conf
-# RUN rm /etc/nginx/http.d/default.conf
+WORKDIR ./
 
-# COPY supervisord.conf /etc/
+COPY nginx-docker.conf /etc/nginx/http.d/vvveb.conf
+RUN rm /etc/nginx/http.d/default.conf
+
+COPY supervisord.conf /etc/
 
 EXPOSE 80
 
 #CMD ["php-fpm", "-F"]
 #CMD ["nginx", "-g", "daemon off;"]
-# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
