@@ -112,10 +112,10 @@ RUN chmod -R 755 ${DIR_CACHE}
 RUN chmod -R 755 ${DIR_DIGITAL_ASSETS}
 RUN chmod -R 755 ${DIR_IMAGE_CACHE}
 
-COPY --from=build nginx-docker.conf /etc/nginx/http.d/vvveb.conf
+COPY --from builder nginx-docker.conf /etc/nginx/http.d/vvveb.conf
 RUN rm /etc/nginx/http.d/default.conf
 
-COPY --from=build supervisord.conf /etc/
+COPY --from builder supervisord.conf /etc/
 
 EXPOSE 80
 
