@@ -117,7 +117,7 @@ ADD nginx-docker.conf ./
 COPY nginx-docker.conf /etc/nginx/http.d/vvveb.conf
 RUN rm /etc/nginx/http.d/default.conf
 
-COPY --from builder supervisord.conf /etc/
+# COPY --from builder supervisord.conf /etc/
 
 EXPOSE 80
 
