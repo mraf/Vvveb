@@ -113,7 +113,7 @@ RUN chmod -R 755 ${DIR_DIGITAL_ASSETS}
 RUN chmod -R 755 ${DIR_IMAGE_CACHE}
 
 
-COPY --from=/ nginx-docker.conf /etc/nginx/http.d/vvveb.conf
+COPY --from=./ nginx-docker.conf /etc/nginx/http.d/vvveb.conf
 RUN rm /etc/nginx/http.d/default.conf
 
 # COPY --from builder supervisord.conf /etc/
